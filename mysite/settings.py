@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django_bootstrap_icons',
 ]
 
+AUTH_USER_MODEL = 'arodj.User' # Sin esto no podemos migrar nuestros usuarios 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

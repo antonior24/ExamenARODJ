@@ -2,10 +2,10 @@ from datetime import datetime
 from itertools import count
 from django.http import HttpResponse
 from django.shortcuts import render
-#from .models import 
+from .models import User, Cliente, Trabajador
 from django.db.models import Q, Prefetch
 from django.views.defaults import page_not_found, server_error, permission_denied, bad_request
-#from componentes.forms import 
+from arodj.forms import RegistroForm
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth import login
@@ -44,3 +44,27 @@ def home(request):
         request.session["usuario_actual"] = request.user.username
     
     return render(request, 'arodj/home.html', {})
+
+#Sesiones
+def registrar_usuario(request):
+    if request.method == 'POST':
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            usuario = form.save()
+            rol = int(form.cleaned_data.get('rol'))
+            if (rol == User.CLIENTE):
+                grupo = Group.objects.get(name='Clientes')
+                grupo.user_set.add(usuario)
+                cliente = Cliente.objects.create(user=usuario)
+                cliente.save()
+            elif (rol == User.TRABAJADOR):
+                grupo = Group.objects.get(name='Trabajadores')
+                grupo.user_set.add(usuario)
+                trabajador = Trabajador.objects.create(user=usuario)
+                trabajador.save()
+            messages.success(request, 'Usuario registrado correctamente.')
+            login(request, usuario)
+            return redirect('home')
+    else:
+        form = RegistroForm()
+    return render(request, 'registration/signup.html', {'form': form})

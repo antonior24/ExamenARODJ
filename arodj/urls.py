@@ -16,7 +16,7 @@ urlpatterns = [
     #CRUD DELETE
     
     #Sessions
-    #path('registrar/', views.registrar_usuario, name='registrar_usuario'),
+    path('registrar/', views.registrar_usuario, name='registrar_usuario'),
     
     # Create Order with user association
     

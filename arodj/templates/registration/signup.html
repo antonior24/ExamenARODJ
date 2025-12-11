@@ -1,0 +1,13 @@
+{% extends "arodj/home.html" %}
+    {% block busqueda %}
+    {% endblock %}
+    {% block cabecera %}
+        <form action = "{% url 'registrar_usuario' %}" method = "post">
+
+            {% load django_bootstrap5 %}
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            {% bootstrap_button "Enviar" button_type="submit" button_class="btn-primary" %}
+        </form>
+    {% endblock cabecera %}
