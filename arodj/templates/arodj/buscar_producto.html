@@ -1,0 +1,14 @@
+{# Buscar producto READ #}
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+
+    <form action="{% url 'producto_buscar' %}" role="search" method="GET">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="textoBusqueda" class="form-label">Buscar Producto</label>
+            <input type="text" class="form-control" id="textoBusqueda" name="textoBusqueda" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+

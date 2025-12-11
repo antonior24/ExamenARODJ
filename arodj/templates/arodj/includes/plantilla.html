@@ -1,0 +1,36 @@
+{% load static %}
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header con Menú Superior</title>
+    <link rel="stylesheet" href="{% static 'estilo.css' %}">
+    <script src="{% static 'javascript/javascript.js' %}"></script>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load bootstrap_icons %}
+    </head>
+    <body>
+    <header>
+        <div class="cabeza">
+            {% include "arodj/includes/header.html" %} 
+            {% block contenido %}{% endblock contenido %}
+            {#{% include "arodj/buscar_producto.html" %}#}
+        </div>
+    </header>
+        <div class="container mt-3">
+        {% bootstrap_messages %}
+        </div>
+    {% block cabecera %}
+    {% endblock cabecera %}
+    <p>{{request.session.fecha_inicio}}</p>
+    <p>Visitas: {{request.session.contador_visitas}}</p>
+    <p>Rol: {{request.session.rol_usuario}}</p>
+    <p>Renderizado por: {{request.session.usuario_actual}}</p>
+    <footer>
+    {% include "arodj/includes/footer.html" %}
+    </footer>
+    </body>
+    </html>

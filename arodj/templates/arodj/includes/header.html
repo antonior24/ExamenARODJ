@@ -1,0 +1,8 @@
+{% load static %}
+  <div class="logo">
+    <img src="{% static "generated-image.png" %}" alt="Logo del sitio" id="logo">
+    <h1>MI SITIO WEB</h1>
+    {% filter force_escape|upper %} {# Template tag filter 5 #}
+    esta es una descripción del sitio web en minúsculas y con caracteres escapados & < >
+  {% endfilter %}
+  </div>
