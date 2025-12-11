@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_seed',
     'django_bootstrap5',
     'django_bootstrap_icons',
+    'debug_toolbar',
 ]
 
 AUTH_USER_MODEL = 'arodj.User' # Sin esto no podemos migrar nuestros usuarios 
@@ -53,7 +54,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+INTERNAL_IPS = ["127.0.0.1"]
 
 ROOT_URLCONF = 'mysite.urls'
 
