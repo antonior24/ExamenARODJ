@@ -1,0 +1,8 @@
+{% extends "./home.html" %}
+    {% block busqueda %}
+    {% endblock %}
+    {% block cabecera %}
+        {% for ensayo in ensayos %}
+            {% include "arodj/includes/ensayos.html" %} 
+        {% endfor %}
+    {% endblock cabecera %}

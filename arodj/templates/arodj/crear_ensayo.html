@@ -1,0 +1,14 @@
+{% extends './home.html' %}
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+
+
+
+{% block cabecera %}
+  <h2>Crear Nuevo Ensayo Clínico</h2>
+  <form method="post">
+    {% csrf_token %}
+   {% bootstrap_form formulario_e %}
+    <button type="submit">Crear Ensayo Clínico</button>
+  </form>
+{% endblock cabecera %}

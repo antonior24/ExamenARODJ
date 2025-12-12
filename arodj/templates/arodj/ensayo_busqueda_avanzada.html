@@ -1,0 +1,14 @@
+{% extends './home.html' %}
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+
+
+
+{% block cabecera %}
+  <h2>Buscar Ensayo</h2>
+  <form method="get">
+    {% csrf_token %}
+   {% bootstrap_form formulario_busqueda_avanzada%}
+    <button type="submit">Buscar Ensayo</button>
+  </form>
+{% endblock cabecera %}
